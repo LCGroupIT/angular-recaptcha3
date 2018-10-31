@@ -1,0 +1,106 @@
+{
+    "name": "angular-recaptcha3",
+    "version": "0.0.0",
+    "ngPackage": {
+        "lib": {
+            "entryFile": "src/index.ts"
+        }
+    },
+    "author": {
+        "name": "Neroda Nikita"
+    },
+    "maintainers": [
+        {
+            "email": "nerodanikita@gmail.com",
+            "name": "Neroda Nikita"
+        }
+    ],
+    "homepage": "https://github.com/LCGroupIT/angular-recaptcha3#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/LCGroupIT/angular-recaptcha3.git"
+    },
+    "keywords": [
+        "api",
+        "angular",
+        "recaptcha"
+    ],
+    "bugs": {
+        "url": "https://github.com/LCGroupIT/angular-recaptcha3/issues"
+    },
+    "license": "MIT",
+    "description": "Angular v6+ integration with google recaptcha v3",
+    "engines": {
+        "node": "8.9.3"
+    },
+    "scripts": {
+        "karma": "npx karma",
+        "rimraf": "npx rimraf",
+        "ngc": "npx ngc",
+        "cpy": "npx cpy",
+        "build": "npx ng-packagr -p package.json",
+        "clean": "npm run clean:build && npm run clean:tests",
+        "clean:build": "npm run rimraf -- dist build",
+        "clean:tests": "npm run rimraf -- coverage && npm run rimraf -- \"tests/**/*.+(js|js.map|d.ts|metadata.json)\" ",
+        "copy:assets": "npm run cpy -- CHANGELOG.md dist",
+        "conventional-changelog": "conventional-changelog",
+        "changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
+        "changelog:add": "git add --force CHANGELOG.md package.json",
+        "changelog:commit": "git commit -m \"Updated CHANGELOG.md\"",
+        "lint": "npm run lint-ts && npm run lint-js && npm run lint-css",
+        "lint-css": "stylelint './src/**/*.css'",
+        "lint-ts": "tslint './src/**/*.ts'",
+        "lint-js": "eslint '**/*.js' --ignore-path .gitignore",
+        "test": "npm run clean:tests && karma start karma.conf.js",
+        "test:watch": "npm run clean:tests && karma start karma.conf.debug.js",
+        "version": "npx conventional-changelog -p angular -i CHANGELOG.md -s -r && npm run build && npm run copy:assets && npm run changelog:add && npm run changelog:commit",
+        "release": "npx np --contents=dist"
+    },
+    "peerDependencies": {
+        "@angular/common": ">=6.0.0 <8.0.0",
+        "@angular/core": ">=6.0.0 <8.0.0",
+        "rxjs": ">=6.3.3 <=7.0.0"
+    },
+    "devDependencies": {
+        "@angular/common": "7.0.0",
+        "@angular/compiler": "^7.0.0",
+        "@angular/compiler-cli": "7.0.0",
+        "@angular/core": "7.0.0",
+        "@angular/forms": "7.0.0",
+        "@angular/platform-browser": "7.0.0",
+        "@angular/platform-browser-dynamic": "7.0.0",
+        "@types/chai": "^4.1.4",
+        "@types/i18next": "^8.4.2",
+        "@types/jasmine": "^2.8.8",
+        "chai": "^4.1.2",
+        "codelyzer": "^4.4.2",
+        "conventional-changelog-cli": "^2.0.1",
+        "conventional-github-releaser": "^3.1.2",
+        "coveralls": "^3.0.2",
+        "cpy-cli": "^1.0.1",
+        "es6-shim": "^0.35.3",
+        "istanbul-instrumenter-loader": "^3.0.1",
+        "jasmine": "^3.2.0",
+        "jasmine-core": "^3.2.1",
+        "karma": "^3.0.0",
+        "karma-chrome-launcher": "^2.2.0",
+        "karma-coverage": "^1.1.2",
+        "karma-jasmine": "^1.1.2",
+        "karma-sourcemap-loader": "^0.3.7",
+        "karma-spec-reporter": "^0.0.32",
+        "karma-webpack": "3.0.0",
+        "ng-packagr": "^4.2.0",
+        "np": "^3.0.4",
+        "rimraf": "^2.6.2",
+        "rxjs": "^6.3.2",
+        "rxjs-compat": "^6.3.2",
+        "sinon": "^6.1.4",
+        "ts-helpers": "^1.1.2",
+        "ts-loader": "^5.2.2",
+        "tslint": "^5.11.0",
+        "typedoc": "^0.11.1",
+        "typescript": ">=2.7.2 <2.8",
+        "webpack": "4.16.3",
+        "zone.js": "^0.8.26"
+    }
+}
