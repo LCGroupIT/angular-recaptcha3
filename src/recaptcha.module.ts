@@ -1,10 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
-import { ReCaptchaComponent } from './recaptcha.component';
 import { RECAPTCHA_LANGUAGE, RECAPTCHA_OPTION } from './recaptch.tokens';
+import { ReCaptchaComponent } from './recaptcha.component';
 import { RECAPTCHA_SERVICE_PROVIDER } from './recaptcha.service';
 
 @NgModule({
+    imports: [CommonModule],
     declarations: [ReCaptchaComponent],
     exports: [ReCaptchaComponent],
     providers: [RECAPTCHA_SERVICE_PROVIDER]

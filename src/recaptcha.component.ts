@@ -20,7 +20,13 @@ import { ReCaptchaService } from './recaptcha.service';
 
 @Component({
     selector: 'recaptcha',
-    template: `<div #target [class.hide]="onHideCaptcha()" class="recaptcha g-recaptcha" [id]="widgetId"></div>`,
+    template: `
+        <div #target
+            [ngClass]="{'hide': onHideCaptcha()}"
+            [class]="'recaptcha g-recaptcha ' + (size || 'invisible')"
+            [id]="widgetId">
+        </div>
+    `,
     styles: [`
         .hide {
             display: none;
@@ -103,7 +109,7 @@ export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
 
     public render(target) {
         return (<any>window).grecaptcha.render(target, {
-            'sitekey': this.option.sitekey || this.sitekey,
+            'sitekey': this.sitekey || this.option.sitekey,
             'badge': this.badge || this.option.badge || 'bottomright',
             'theme': this.theme || this.option.theme || 'light',
             'type': this.type || this.option.type || 'image',

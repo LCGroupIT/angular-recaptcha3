@@ -46,10 +46,10 @@ export class ReCaptchaService {
     }
 
     public execute(options: any = undefined): Promise<string> {
-        let captcha = (<any>window).grecaptcha;
-        let id = document.getElementsByClassName('g-recaptcha');
+        const captcha = (<any>window).grecaptcha;
+        const captchaElement = document.querySelector('.g-recaptcha.invisible');
 
-        return captcha.execute(+id[0].id, options);
+        return captcha.execute(captchaElement.id, options);
     }
 
     private onloadCallback() {
