@@ -1,7 +1,18 @@
 # angular-recaptcha3
-Angular v6+ integration with google recaptcha (version 2-3)
+Angular v6+ integration with google recaptcha v2-3.
 
 ## Setup
+
+```typescript
+import { ReCaptchaModule } from 'angular-recaptcha3';
+
+@NgModule({
+    imports: [
+        ReCaptchaModule.forRoot(RECAPTCHA_OPTION)
+    ]
+})
+```
+
 ```typescript
 const RECAPTCHA_OPTION = {
     language?: string;
@@ -20,16 +31,6 @@ interface IRecaptchaOption {
 Option description: https://developers.google.com/recaptcha/docs/display
 
 Language codes: https://developers.google.com/recaptcha/docs/language
-
-```typescript
-import { ReCaptchaModule } from 'angular-recaptcha3';
-
-@NgModule({
-    imports: [
-        ReCaptchaModule.forRoot(RECAPTCHA_OPTION)
-    ]
-})
-```
 
 Example AppModule:
 
