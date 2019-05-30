@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
-import { RECAPTCHA_LANGUAGE, RECAPTCHA_OPTION } from './recaptch.tokens';
+import { IRecaptchaOptionType } from './models/recaptcha-option-type.interface';
+import { RECAPTCHA_OPTION } from './recaptch.tokens';
 import { ReCaptchaComponent } from './recaptcha.component';
 import { RECAPTCHA_SERVICE_PROVIDER } from './recaptcha.service';
 
@@ -13,17 +14,13 @@ import { RECAPTCHA_SERVICE_PROVIDER } from './recaptcha.service';
 })
 
 export class ReCaptchaModule {
-    static forRoot(option: any = undefined, lang: string = undefined): ModuleWithProviders {
+    static forRoot(option: IRecaptchaOptionType = undefined): ModuleWithProviders {
         return {
             ngModule: ReCaptchaModule,
             providers: [
                 {
                     provide: RECAPTCHA_OPTION,
                     useValue: option
-                },
-                {
-                    provide: RECAPTCHA_LANGUAGE,
-                    useValue: lang
                 }
             ]
         };

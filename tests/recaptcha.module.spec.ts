@@ -1,7 +1,7 @@
-import { inject, TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
-import { ReCaptchaComponent } from '../src/recaptcha.component';
 import * as RecaptchaTokens from '../src/recaptch.tokens';
+import { ReCaptchaComponent } from '../src/recaptcha.component';
 import { RECAPTCHA_SERVICE_PROVIDER, ReCaptchaService } from '../src/recaptcha.service';
 
 
@@ -12,14 +12,15 @@ describe('ReCaptchaModule', () => {
     const lang: string = 'ru';
 
     const option = {
-        key: '6Ld4AGIUAAAAACOL56rkJOa8LHgkq4uNgmnERLJY',
-        size: 'invisible',
-        theme: 'light',
-        type: 'image',
-        tabindex: 0,
-        badge: 'bottomright',
-        language: 'ru',
-        show: true
+        invisible: {
+            sitekey: '6Ld4AGIUAAAAACOL56rkJOa8LHgkq4uNgmnERLJY',
+            size: 'invisible',
+            theme: 'light',
+            type: 'image',
+            tabindex: 0,
+            badge: 'bottomright',
+        },
+        language: 'ru'
     };
 
     beforeEach(async(() => {
@@ -31,10 +32,6 @@ describe('ReCaptchaModule', () => {
                 {
                     provide: RecaptchaTokens.RECAPTCHA_OPTION,
                     useValue: option
-                },
-                {
-                    provide: RecaptchaTokens.RECAPTCHA_LANGUAGE,
-                    useValue: lang
                 }
             ]
         });

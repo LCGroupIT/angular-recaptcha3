@@ -1,28 +1,24 @@
 import { forwardRef } from '@angular/core';
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import * as RecaptchaTokens from '../src/recaptch.tokens';
 import { ReCaptchaComponent } from '../src/recaptcha.component';
 import { RECAPTCHA_SERVICE_PROVIDER, ReCaptchaService } from '../src/recaptcha.service';
-import { HttpTestingController } from '@angular/common/http/testing';
-import { BehaviorSubject } from 'rxjs';
-
-
 
 describe('ReCaptchaComponent', () => {
   let component: ReCaptchaComponent;
   let fixture: ComponentFixture<ReCaptchaComponent>;
-  const lang: string = 'ru';
   const option = {
-      key: '6Ld4AGIUAAAAACOL56rkJOa8LHgkq4uNgmnERLJY',
-      size: 'invisible',
-      theme: 'light',
-      type: 'image',
-      tabindex: 0,
-      badge: 'bottomright',
-      language: 'ru',
-      show: true
+    invisible: {
+        sitekey: '6Ld4AGIUAAAAACOL56rkJOa8LHgkq4uNgmnERLJY',
+        size: 'invisible',
+        theme: 'light',
+        type: 'image',
+        tabindex: 0,
+        badge: 'bottomright',
+    },
+    language: 'ru'
   };
 
   beforeEach(async(() => {
@@ -39,10 +35,6 @@ describe('ReCaptchaComponent', () => {
             {
                 provide: RecaptchaTokens.RECAPTCHA_OPTION,
                 useValue: option
-            },
-            {
-                provide: RecaptchaTokens.RECAPTCHA_LANGUAGE,
-                useValue: lang
             }
         ]
       })

@@ -1,42 +1,83 @@
 # angular-recaptcha3
-Angular v6+ integration with google recaptcha v3
+Angular v6+ integration with google recaptcha (version 2-3)
 
 ## Setup
-Setup example:
 ```typescript
 const RECAPTCHA_OPTION = {
-      key: 'test-key',
-      size: 'invisible',
-      theme: 'light',
-      type: 'image',
-      tabindex: 0,
-      badge: 'bottomright',
-      language: 'ru',
-      show: true
+    language?: string;
+    invisible?: IRecaptchaOption;
+    normal?: IRecaptchaOption;
+}
+
+interface IRecaptchaOption {
+    sitekey: string;
+    theme?: string;
+    type?: string;
+    tabindex?: number;
+    badge?: string;
 }
 ```
 Option description: https://developers.google.com/recaptcha/docs/display
-```typescript
-const RECAPTCHA_LANGUAGE = 'ru'
-```
+
 Language codes: https://developers.google.com/recaptcha/docs/language
 
 ```typescript
+import { ReCaptchaModule } from 'angular-recaptcha3';
+
 @NgModule({
     imports: [
-        ReCaptchaModule.forRoot(RECAPTCHA_OPTION, RECAPTCHA_LANGUAGE)
+        ReCaptchaModule.forRoot(RECAPTCHA_OPTION)
+    ]
+})
+```
+
+Example AppModule:
+
+```typescript
+import { ReCaptchaModule } from 'angular-recaptcha3';
+
+@NgModule({
+    imports: [
+        ReCaptchaModule.forRoot({
+            invisible: {
+                sitekey: 'your key', 
+            },
+            normal: {
+                sitekey: 'your key', 
+            },
+            language: 'en'
+        }),
     ]
 })
 ```
 
 To initialize the recaptcha you need to insert in the template
 ```html
-    <recaptcha
-        [show]="false">
-    </recaptcha>
+<recaptcha 
+    [size]="'invisible'"
+    (captchaResponse)="onCaptchaResponse($event)"
+    (captchaExpired)="onCaptchaExpired()">
+</recaptcha>
+
+<recaptcha 
+    [size]="'normal'"
+    [hide]="false" 
+    (captchaResponse)="onCaptchaResponse($event)">
+</recaptcha>
 ```
+
+```typescript
+onCaptchaExpired(event) {
+    console.log(event);
+}
+
+onCaptchaResponse(event) {
+    console.log(event);
+}
+```
+
 Recaptcha has parametrs:
-- show
+- hide
 - sitekey
 - size
 - theme
