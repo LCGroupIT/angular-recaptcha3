@@ -1,3 +1,7 @@
+# [1.0.0](https://github.com/LCGroupIT/angular-recaptcha3/compare/v0.2.0-beta...v1.0.0) (2020-07-07)
+
+
+
 # [0.2.0-beta](https://github.com/LCGroupIT/angular-recaptcha3/compare/v0.1.2...v0.2.0-beta) (2019-05-30)
 
 
