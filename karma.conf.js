@@ -3,6 +3,14 @@ var path = require('path');
 module.exports = function (config) {
     config.set({
         browsers: ['Chrome'],
+        plugins: [
+            'karma-coverage',
+            'karma-sourcemap-loader',
+            'karma-webpack',
+            'karma-chrome-launcher',
+            'karma-jasmine',
+            'karma-spec-reporter'
+        ],
         colors: true,
         coverageReporter: {
             dir: './',
@@ -54,7 +62,10 @@ module.exports = function (config) {
                         ],
                         loader: 'istanbul-instrumenter-loader',
                         test: /\.ts$/,
-                        enforce: 'post'
+                        enforce: 'post',
+                        query: {
+                            esModules: true
+                        }
                     }
                 ]
             },

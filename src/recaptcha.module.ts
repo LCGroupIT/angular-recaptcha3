@@ -14,7 +14,7 @@ import { RECAPTCHA_SERVICE_PROVIDER } from './recaptcha.service';
 })
 
 export class ReCaptchaModule {
-    static forRoot(option: IRecaptchaOptionType = undefined): ModuleWithProviders {
+    static forRoot(option: IRecaptchaOptionType = undefined): ModuleWithProviders<ReCaptchaModule> {
         return {
             ngModule: ReCaptchaModule,
             providers: [
