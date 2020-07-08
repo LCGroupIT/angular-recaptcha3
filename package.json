@@ -56,6 +56,9 @@
         "version": "npx conventional-changelog -p angular -i CHANGELOG.md -s -r && npm run build && npm run copy:assets && npm run changelog:add && npm run changelog:commit",
         "release": "npx np --contents=dist"
     },
+    "dependencies": {
+        "tslib": "^2.0.0"
+    },
     "peerDependencies": {
         "@angular/common": ">=10.0.0 <11.0.0",
         "@angular/core": ">=10.0.0 <11.0.0",
