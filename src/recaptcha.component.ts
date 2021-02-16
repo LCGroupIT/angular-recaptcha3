@@ -7,9 +7,9 @@ import {
     Injectable,
     Input,
     NgZone,
-    OnInit,
     Output,
     ViewChild,
+    AfterViewInit,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -42,7 +42,7 @@ import { ReCaptchaService } from './recaptcha.service';
     ]
 })
 @Injectable()
-export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
+export class ReCaptchaComponent implements AfterViewInit, ControlValueAccessor {
     @Input() sitekey: string;
     @Input() size: string;
     @Input() theme: string;
@@ -81,7 +81,7 @@ export class ReCaptchaComponent implements OnInit, ControlValueAccessor {
         };
     }
 
-    ngOnInit() {
+    ngAfterViewInit() {
         this.setWidgetId();
     }
 
